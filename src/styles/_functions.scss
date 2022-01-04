@@ -1,0 +1,52 @@
+@keyframes gradient-animation {
+  0% {
+    background-position: 10% 60%;
+  }
+
+  50% {
+    background-position: 45% 90%;
+  }
+
+  100% {
+    background-position: 10% 60%;
+  }
+}
+
+@keyframes rainbow-color-cycle {
+  12.5% {
+    background-color: red;
+  }
+
+  25% {
+    background-color: orange;
+  }
+
+  37.5% {
+    background-color: yellow;
+  }
+
+  50% {
+    background-color: green;
+  }
+
+  62.5% {
+    background-color: cyan;
+  }
+
+  75% {
+    background-color: blue;
+  }
+
+  87.5% {
+    background-color: indigo;
+  }
+
+  100% {
+    background-color: violet;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

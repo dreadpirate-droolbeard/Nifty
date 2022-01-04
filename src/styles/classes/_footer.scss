@@ -1,0 +1,109 @@
+.footer {
+  height: 8vh;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  justify-content: space-between;
+  z-index: var(--z-high);
+}
+
+.company,
+.social-media-links {
+  // margin: 0 5rem;
+  margin: auto 1rem;
+
+  a {
+    padding: 0 1rem;
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: $smallScreen) {
+    font-size: 1rem;
+
+    a {
+      padding: 0 0.25rem;
+      font-size: 2rem;
+    }
+  }
+}
+
+.company,
+.documentation,
+.marketplace-wrapper,
+.social-media-links,
+.empty-footer-div {
+  width: 33%;
+}
+
+.empty-footer-div {
+  margin: auto 1rem;
+}
+
+.social-media-links {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.documentation {
+  text-align: center;
+  margin: auto;
+}
+
+.marketplace-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  margin: auto 1rem;
+
+  .marketplace-label {
+    margin: auto 0;
+  }
+
+  .marketplace-links-wrapper {
+    margin: auto 0;
+    display: flex;
+    padding: 0 1rem;
+
+    & a {
+      padding: 0 1rem;
+    }
+
+    .paintswap-logo-anchor,
+    .nftkey-logo-anchor {
+      display: block;
+      text-align: center;
+
+      .paintswap-logo-img,
+      .nftkey-logo-img {
+        height: 6vh;
+      }
+    }
+  }
+
+  @media (max-width: $smallScreen) {
+    display: block;
+    overflow: hidden;
+
+    .marketplace-label {
+      font-size: 1rem;
+    }
+
+    .marketplace-links-wrapper {
+      padding: 0 0.25rem;
+      justify-content: center;
+
+      & a {
+        padding: 0 0.25rem;
+      }
+
+      .paintswap-logo-anchor,
+      .nftkey-logo-anchor {
+        .nftkey-logo-img,
+        .paintswap-logo-img {
+          height: 5vh;
+        }
+      }
+    }
+  }
+}

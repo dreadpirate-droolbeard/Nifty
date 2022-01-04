@@ -1,0 +1,152 @@
+<div className="bubos-container">
+<div className="bubos-row">
+  <div className="bubo-wrapper">
+    <img
+      className="infected-bubo"
+      id="infected-bubo"
+      alt="bubo"
+      src={red}
+      style={{
+        zIndex: 100,
+      }}
+      />
+    <div className="infected-label"> Infected </div>
+  </div>
+  <div className="bubo-wrapper">
+    <img
+      className="bubo"
+      id="bubo2"
+      alt="bubo"
+      src={red}
+      style={{
+        zIndex: 100,
+      }}
+    />
+  </div>
+</div>
+<div className="bubos-row">
+  <div className="bubo-wrapper">
+    <img
+      className="infected-bubo"
+      id="bubo1"
+      alt="bubo"
+      src={green}
+      style={{
+        zIndex: 100,
+      }}
+    />
+    <div className="infected-label"> Infected </div>
+  </div>
+  <div className="bubo-wrapper">
+    <img
+      className="bubo"
+      id="bubo2"
+      alt="bubo"
+      src={green}
+      style={{
+        zIndex: 100,
+      }}
+    />
+  </div>
+</div>
+<div className="bubos-row">
+  <div className="bubo-wrapper">
+    <img
+      className="infected-bubo"
+      id="bubo1"
+      alt="bubo"
+      src={yellow}
+      style={{
+        zIndex: 100,
+      }}
+    />
+    <div className="infected-label"> Infected </div>
+  </div>
+  <div className="bubo-wrapper">
+    <img
+      className="bubo"
+      id="bubo2"
+      alt="bubo"
+      src={yellow}
+      style={{
+        zIndex: 100,
+      }}
+    />
+  </div>
+</div>
+<div className="bubos-row">
+  <div className="bubo-wrapper">
+    <img
+      className="infected-bubo"
+      id="bubo1"
+      alt="bubo"
+      src={blue}
+      style={{
+        zIndex: 100,
+      }}
+    />
+    <div className="infected-label"> Infected </div>
+  </div>
+  <div className="bubo-wrapper">
+    <img
+      className="bubo"
+      id="bubo2"
+      alt="bubo"
+      src={blue}
+      style={{
+        zIndex: 100,
+      }}
+    />
+  </div>
+</div>
+<div className="bubos-row">
+  <div className="bubo-wrapper">
+    <img
+      className="infected-bubo"
+      id="bubo1"
+      alt="bubo"
+      src={purple}
+      style={{
+        zIndex: 100,
+      }}
+    />
+    <div className="infected-label"> Infected </div>
+  </div>
+  <div className="bubo-wrapper">
+    <img
+      className="bubo"
+      id="bubo2"
+      alt="bubo"
+      src={purple}
+      style={{
+        zIndex: 100,
+      }}
+    />
+  </div>
+</div>
+<div className="bubos-row">
+  <div className="bubo-wrapper">
+    <img
+      className="infected-bubo"
+      id="bubo1"
+      alt="bubo"
+      src={orange}
+      style={{
+        zIndex: 100,
+      }}
+    />
+    <div className="infected-label"> Infected </div>
+  </div>
+  <div className="bubo-wrapper">
+    <img
+      className="bubo"
+      id="bubo2"
+      alt="bubo"
+      src={orange}
+      style={{
+        zIndex: 100,
+      }}
+    />
+  </div>
+</div>
+</div>

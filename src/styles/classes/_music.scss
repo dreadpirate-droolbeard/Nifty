@@ -1,0 +1,20 @@
+.music-button-wrapper {
+  padding-left: 1rem;
+  padding-top: 0.25rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 2vw;
+
+  .nav-menu & {
+    width: unset;
+    position: absolute;
+    top: 2vh;
+    right: 4vw;
+  }
+}
+
+.music-button {
+  width: 100%;
+  // background-color: var(--button-color-secondary);
+  // color: var(--text-color);
+}

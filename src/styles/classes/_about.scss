@@ -1,0 +1,60 @@
+.about-page {
+  width: 100%;
+  display: flex;
+}
+
+.video-wrapper {
+  display: flex;
+  flex-basis: 70%;
+  justify-content: center;
+}
+
+.about-content {
+  display: flex;
+  flex-basis: 30%;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+
+  .colon {
+    padding-top: 2vh;
+    padding-right: 0.5vw;
+    font-size: 6vh;
+  }
+
+  .interval-wrapper {
+    display: flex;
+
+    .interval {
+      align-items: center;
+    }
+
+    .numbers {
+      font-size: 10vh;
+    }
+
+    .text {
+      font-size: 3vh;
+    }
+  }
+}
+
+.countdown-message,
+.social-media-title {
+  font-family: var(--accent-font);
+  padding-bottom: 1vh;
+  font-size: 5vh;
+  color: var(--accent-color-one);
+}
+
+.paintswap-svg img {
+  height: 5vh;
+  width: 5vh;
+  padding-top: 2.5rem;
+}

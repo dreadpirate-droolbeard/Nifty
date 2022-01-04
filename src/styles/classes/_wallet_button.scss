@@ -1,0 +1,33 @@
+.wallet-button-wrapper {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 8.5vw;
+  display: inline-flex;
+}
+
+.connect-wallet-button-wrapper,
+.disconnect-wallet-button-wrapper {
+  width: 100%;
+
+  .nav-menu & {
+    width: 60vw;
+    margin: auto;
+    margin-bottom: 15vh;
+  }
+}
+
+.connect-wallet-button,
+.connected-wallet-button {
+  width: 100%;
+  background: var(--gold-gradient);
+  background-size: 200% 200%;
+  animation: gradient-animation 3s infinite;
+  pointer-events: all;
+  font-size: 2.8vh;
+  border-radius: 1.5rem;
+}
+
+.connect-wallet-button:disabled {
+  opacity: 0.65;
+  pointer-events: none;
+}

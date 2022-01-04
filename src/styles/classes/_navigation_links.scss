@@ -1,0 +1,21 @@
+.header-link-button {
+  color: var(--text-color);
+  width: fit-content;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+  text-decoration: none;
+  font-family: Verdana, sans-serif;
+  text-shadow: 1px 1px 2px var(--button-text-shadow);
+}
+
+.header-links {
+  z-index: var(--z-low);
+
+  @media (max-width: $smallScreen) {
+    display: flex;
+    flex-direction: column;
+  }
+}

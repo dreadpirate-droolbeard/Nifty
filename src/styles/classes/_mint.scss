@@ -1,0 +1,36 @@
+.background-wrapper {
+  height: 92vh;
+
+  img.background-img {
+    position: absolute;
+    object-fit: fill;
+    width: 100%;
+    left: 50%;
+    background-size: 45%;
+    background-repeat: no-repeat;
+    height: 92vh;
+    transform: translate(-50%, 0);
+  }
+}
+
+.modal.overlay.mint-form {
+  z-index: var(--z-high);
+}
+
+.mouse-over-audio {
+  position: fixed;
+  z-index: var(--z-med-sup);
+}
+
+.mint-button {
+  z-index: inherit;
+  height: 100%;
+  width: 100%;
+  pointer-events: all;
+
+  &:disabled {
+    opacity: 0;
+    border-color: var(--border-color);
+    pointer-events: none;
+  }
+}

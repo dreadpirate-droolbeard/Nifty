@@ -1,0 +1,23 @@
+html {
+  font-size: 62.5%; // rem to px
+  height: 100%;
+  width: 100%;
+
+  --small-screen: #{ $smallScreen };
+  --medium-screen: #{ $mediumScreen };
+}
+
+body {
+  font-size: 2rem;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--body-background-color);
+  color: var(--text-color);
+  margin: 0;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
