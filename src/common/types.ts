@@ -5,7 +5,26 @@ export interface iFormControls {
   setShowForm: (showForm: boolean) => void;
 }
 
-export enum eDegenTraits {
+export enum eDegenTraitsKeys {
+  Background = "Background",
+  Tribe = "Tribe",
+  Skin_Color = "Skin_Color",
+  Fur_Color = "Fur_Color",
+  Eye_Color = "Eye_Color",
+  Mouth = "Mouth",
+  Beard = "Beard",
+  Outerwear = "Outerwear",
+  Footwear = "Footwear",
+  Hat = "Hat",
+  Eyewear = "Eyewear",
+  Wrist = "Wrist",
+  Neckwear = "Neckwear",
+  Left_Item = "Left_Item",
+  Right_Item = "Right_Item",
+  Extra_Trait_Count = "Extra_Trait_Count",
+}
+
+export enum eDegenTraitsLabels {
   Background = "Background",
   Tribe = "Tribe",
   Skin_Color = "Skin Color",
@@ -24,22 +43,42 @@ export enum eDegenTraits {
   Extra_Trait_Count = "Extra Trait Count",
 }
 
-export type tDegenTraitObejct = {
-  trait_type: eDegenTraits;
-  value: string | number;
+// export type tDegenTraitObejct = {
+//   trait_type?: eDegenTraits | string | undefined;
+//   // trait_type: string;
+//   value: string | number;
+//   display_type?: string;
+// }
+
+// export type tDegenTraitObject = {
+//   trait_type?: eDegenTraits | string | undefined;
+//   // trait_type: string;
+//   value: string | number;
+//   display_type?: string;
+// }
+
+export type tDegenTraitObject = {
+  [key in eDegenTraitsKeys]: string | number
 }
 
+export interface iDegenDataObject {
+  name: string;
+  image: string;
+  description: string;
+  external_url: string;
+  attributes: tDegenTraitObject;
+}
 
 export type tDegenObject = {
   tokenId: number;
   tokenUri: string;
-  tokenData: {
-    name: string;
-    image: string;
-    description: string;
-    externalUrl: string;
-    attributes: tDegenTraitObejct[];
-  }
+  tokenData: iDegenDataObject
+}
+
+export enum eSortOptions {
+  TOKENID_L2H = "TokenId (Low to High)",
+  TOKENID_H2L = "TokenId (High to Low)",
+  ACCUMULATED_H2L = "Accumulated (High to Low)"
 }
 
 const DPDB = {

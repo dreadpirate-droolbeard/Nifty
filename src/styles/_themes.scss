@@ -50,7 +50,7 @@
   --accent-color-two: #{ $colorRed };
 
   .mint-button-wrapper {
-    z-index: var(--z-med);
+    z-index: var(--z-mid);
     position: fixed;
     left: 45%;
     top: 77%;
@@ -72,7 +72,7 @@
   --accent-color-one: #{ $colorGrinch };
 
   .mint-button-wrapper {
-    z-index: var(--z-med);
+    z-index: var(--z-mid);
     position: fixed;
     left: 45%;
     top: 77%;
@@ -89,20 +89,35 @@
   }
 }
 
-.halloween {
+.nofs {
   --accent-font: infernalda, serif;
 
   --button-color: #{ $colorPumpkinOrange };
-  --button-color-secondary: #{ $colorPurple };
-  --button-color-tertiary: #{ $colorGray };
+  --button-color-light: #{ lighten($colorPumpkinOrange, 25) };
+  --button-color-dark: #{ darken($colorPumpkinOrange, 25) };
 
   --button-text-shadow: #{ $colorBlack  };
   --text-border-shadow: #{ $colorGray };
 
   --accent-color-one: #{ $colorPumpkinOrange };
 
+  --gold-gradient:
+    radial-gradient(
+      var(--button-color),
+      var(--button-color-light),
+      var(--button-color),
+      var(--button-color-dark)
+    );
+
+  --button-color-secondary: #{ $colorRed };
+  --button-color-tertiary: #{ $colorGray };
+
+  --accent-color-one: #{ $colorGrinch };
+  --accent-color-two: #{ $colorGold };
+
+  
   .mint-button-wrapper {
-    z-index: var(--z-med);
+    z-index: var(--z-mid);
     position: fixed;
     left: 1%;
     top: 11%;

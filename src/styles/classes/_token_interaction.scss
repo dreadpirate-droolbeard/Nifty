@@ -6,6 +6,7 @@
   margin-bottom: 1rem;
   position: absolute;
   top: 8vh;
+  z-index: var(--z-mid);
 
   @media (max-width: $smallScreen) {
     font-size: 1.5rem;
@@ -27,17 +28,13 @@
     }
   }
 
-  .plague-pit-status-wrapper {
+  .search-inputs-wrapper {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
+    width: 50%;
 
-    .plague-pit-status-label {
-      margin: auto 1rem;
-    }
-
-    .plague-pit-status {
-      margin: auto 0;
-      font-family: var(--accent-font);
+    .sort-dropdown-wrapper{
+      display: flex;
     }
 
     // @media (max-width: $smallScreen) {
