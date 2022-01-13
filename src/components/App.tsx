@@ -11,7 +11,8 @@ import { Background } from "./pages/Mint";
 import { DappContext, DappContextProvider } from "../contexts/MintContext";
 import { Wallet } from "./pages/Wallet";
 import { pathDegen } from "../common/configs";
-import { TokenDataContextProvider } from "../contexts/TokenDataContext";
+import { TokenDataContextProvider } from "../contexts/SecondDappContext";
+import { TokenInteractionContextProvider } from "../contexts/TokenInteractionContext";
 
 export function App(): React.ReactElement {
   return(
@@ -21,6 +22,7 @@ export function App(): React.ReactElement {
         { ({userAddress}): React.ReactElement => {
           return(
             <TokenDataContextProvider getTokenData={ userAddress !== undefined } >
+              <TokenInteractionContextProvider >
               <Switch>
                 <Route exact path={"/mint"}>
                   <GlobalHeader />
@@ -38,6 +40,7 @@ export function App(): React.ReactElement {
                   <Redirect to={"/mint"}/>
                 </Route>
               </Switch>
+              </TokenInteractionContextProvider>
             </TokenDataContextProvider>
           )
         }}

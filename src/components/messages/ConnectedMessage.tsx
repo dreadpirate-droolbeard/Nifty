@@ -3,7 +3,7 @@ import { pathDegen } from "../../common/configs";
 import { CRYPTO_CURRENCY_SYMBOL } from "../../common/constants";
 import token from "../../resources/logos/NFTL.png";
 import { DappContext } from "../../contexts/MintContext";
-import { TokenDataContext } from "../../contexts/TokenDataContext";
+import { TokenDataContext } from "../../contexts/SecondDappContext";
 import { tokenNames } from "../../contexts/types";
 
 export function WalletConnected(): React.ReactElement {

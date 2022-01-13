@@ -1,5 +1,5 @@
 import React, { ReactElement, useContext, useEffect, useState } from "react";
-import { eDegenTraitsKeys, eDegenTraitsLabels, eSortOptions, tDegenObject, tDegenTraitObject } from "../../common/types";
+import { eDegenTraitsKeys, eSortOptions, tDegenObject, tDegenTraitObject } from "../../common/types";
 import { DappContext } from "../../contexts/MintContext";
 import token from "../../resources/logos/NFTL.png";
 
@@ -8,6 +8,7 @@ import degenData from "../../data/degen-data.json";
 
 import { Loading } from "./Loading";
 import { DegenBackgrounds } from "../../common/constants";
+import { TokenInteractionContext } from "../../contexts/TokenInteractionContext";
 
 export interface iDegenData extends tDegenObject{
   accumulatedNFTL: number;
@@ -16,6 +17,7 @@ export interface iDegenData extends tDegenObject{
 
 export function Degens(): ReactElement {
   const { getAccumulatedNFTL, filterSelection, sortSelection } = useContext(DappContext);
+  const { min: [minValue], max: [maxValue] } = useContext(TokenInteractionContext);
   const [degens, setDegens ] = useState<Array<JSX.Element | undefined> | JSX.Element | undefined>(undefined);
   // const [nftData, setNFTData] = useState<Map<number, number>>();
   const [nftData, setNFTData] = useState<iDegenData[]>([]);
@@ -56,6 +58,30 @@ export function Degens(): ReactElement {
         break;
     }
     setNFTData(sortedData);
+  }
+
+  function filterSortedData(degen: iDegenData): boolean {
+    const minVal = minValue as number;
+    const maxVal = maxValue as number;
+
+    console.log('Filter Sorted Data:', minVal, maxVal, sortSelection)
+    if( sortSelection !== undefined && minVal !== 0 && minVal !== undefined && maxVal !== 0 && minVal !== 0) {
+      switch(sortSelection){
+        case eSortOptions.ACCUMULATED_H2L: {
+          if( degen.accumulatedNFTL >= minVal && degen.accumulatedNFTL <= maxVal ) return true
+          return false;
+        }
+        case eSortOptions.TOKENID_L2H:
+        case eSortOptions.TOKENID_H2L: {
+          if( degen.tokenId >= minVal && degen.tokenId <= maxVal ) return true
+          return false;
+        }
+        default:
+          return false;
+      }
+    } else {
+      return true
+    }
   }
 
 
@@ -162,28 +188,31 @@ export function Degens(): ReactElement {
   }
 
   function renderDegens(): void {
+    console.log("Render Degens")
     const degens = nftData.map( (degen) => {
-      return (
-        <div className= {`degen-wrapper ${degen.background.toLowerCase()}`} key={degen.tokenId}>
-          <div className="degen-name">{degen.tokenData.name}</div>
-          {renderImage(degen.tokenId, degen.tokenData.attributes.Background as string)}
-          <div className="degen-background" >{degen.background}</div>
-          <div className="data-container">
-            <div className="degen-token-id">TokenId: {degen.tokenId}</div>
-            <div className="degen-nftl-wrapper">
-              <div className="degen-nftl-accumulated">
-                NFTL: {degen.accumulatedNFTL}
+      if( filterSortedData(degen) ) {      
+        return (
+          <div className= {`degen-wrapper ${degen.background.toLowerCase()}`} key={degen.tokenId}>
+            <div className="degen-name">{degen.tokenData.name}</div>
+            {renderImage(degen.tokenId, degen.tokenData.attributes.Background as string)}
+            <div className="degen-background" >{degen.background}</div>
+            <div className="data-container">
+              <div className="degen-token-id">TokenId: {degen.tokenId}</div>
+              <div className="degen-nftl-wrapper">
+                <div className="degen-nftl-accumulated">
+                  NFTL: {degen.accumulatedNFTL}
+                </div>
+                <img
+                  className="token-img"
+                  id="token-img"
+                  alt="token-img"
+                  src={token}
+                />
               </div>
-              <img
-                className="token-img"
-                id="token-img"
-                alt="token-img"
-                src={token}
-              />
             </div>
           </div>
-        </div>
-      )
+        )
+      }
     });
 
     setDegens(degens);
