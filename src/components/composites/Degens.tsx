@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useEffect, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useRef, useState } from "react";
 import { eDegenTraitsKeys, eSortOptions, tDegenObject, tDegenTraitObject } from "../../common/types";
 import { DappContext } from "../../contexts/MintContext";
 import token from "../../resources/logos/NFTL.png";
@@ -9,6 +9,7 @@ import degenData from "../../data/degen-data.json";
 import { Loading } from "./Loading";
 import { DegenBackgrounds } from "../../common/constants";
 import { TokenInteractionContext } from "../../contexts/TokenInteractionContext";
+import { InfiniteScroll } from "./InfiniteScroll";
 
 export interface iDegenData extends tDegenObject{
   accumulatedNFTL: number;
@@ -218,10 +219,49 @@ export function Degens(): ReactElement {
     setDegens(degens);
   }
   
+  const NUMBERS_PER_PAGE = 100;
+  const [numbers, setNumbers] = useState<number[]>([]);
+  const [page, setPage] = useState(0);
+  const loadingRef = useRef<HTMLDivElement>(null);
+
+  const hasMoreData = numbers.length < 1000;
+
+  useEffect( () => {
+    console.log("comp did mount")
+  }, []);
+
+  useEffect( () => {
+    console.log("page updated:", page)
+    if(hasMoreData){
+      setTimeout(() => {
+        const newNumbers = new Array(NUMBERS_PER_PAGE)
+          .fill(1)
+          .map((_, i) => page * NUMBERS_PER_PAGE + i);
+        setNumbers((nums) => [...nums, ...newNumbers]);
+      }, 300);
+    }
+  }, [page]);
+
+  const loadMoreNumbers = (): void => {
+    console.log('Load More Numbers - init - page:', page)
+    setPage((page) => page + 1);
+  };
+
   return(
-      <div className="degens-container">
+    <div className="degens-container">
+      <InfiniteScroll
+        onBottomHit={loadMoreNumbers}
+        targetElement={loadingRef}
+      >
         { degens }
-      </div>
+        <div
+          className="loading-div"
+          ref={loadingRef}
+        >
+          {hasMoreData ? <span >Loading...</span> : <span>End Of Dataset</span>}
+        </div>
+      </InfiniteScroll>
+    </div>
   )
 }
 

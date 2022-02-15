@@ -13,8 +13,8 @@ export function Wallet(): React.ReactElement {
   function renderWalletContainer(): React.ReactElement {
 
     // if( isConnected ) {
-      // return <Degens />
-      return <NumberScrolling />
+      return <Degens />
+      // return <NumberScrolling />
     // }
     
     // return <DisconnectedWallet />
