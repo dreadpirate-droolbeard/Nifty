@@ -3,6 +3,7 @@ import { DappContext } from "../../contexts/MintContext";
 import { Degens } from "../composites/Degens";
 import { TokenInteractions } from "../composites/TokenInteractions";
 import { Footer } from "../composites/Footer";
+import { NumberScrolling } from "./NumberScrolling";
 
 
 export function Wallet(): React.ReactElement {
@@ -13,6 +14,7 @@ export function Wallet(): React.ReactElement {
 
     // if( isConnected ) {
       return <Degens />
+      // return <NumberScrolling />
     // }
     
     // return <DisconnectedWallet />
@@ -21,7 +23,8 @@ export function Wallet(): React.ReactElement {
   return(
     <div className="wallet-container">
       <div className="token-interaction-container">
-        {isConnected && <TokenInteractions /> }
+        {/* {isConnected && <TokenInteractions /> } */}
+        <TokenInteractions />
       </div>
       {/* <img
         className="wallet-background"

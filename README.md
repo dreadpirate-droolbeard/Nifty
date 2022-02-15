@@ -1,39 +1,20 @@
-# Sample React Dapp
+# Super Nifty Degen Filter
 
-This directory has a sample Dapp to interact with your contracts, built using
-React.
+This Project is a pet project (can't wait for Degen pets!)... wish I had more time to tinker on it (hence my job app with Nifty League!). It was built off the bones of my 3rd generation frontend for Web3 minting projects... so ignore the "mint" screen... and a lot of the other severely lacking UX and UI aspects, as well as clunky functionality.
 
-## Running the Dapp
+To use this:
+ - Checkout this repo
+ - run `npm install` or `yarn install` whatever your flavor
+ - run `npm run start` or `yarn start`
+Once the webpage has launced:
+ - Ignore the placeholder "Mint" screen... ignore the "Home" button that fails...
+ - Navigate to "Wallet" (Caution - if you select the "common" background, the app is sluggish and might be unresponsive for a bit)
+  - If you want accumualted NFTL data - Click the "Connect" button in the top right (this isn't required for contract interaction, but 
+  was the easiest way to ensure Ethers/Metamask is installed in the browser from building off the previous projects. This is one of the many things on the "ToDo" list for this project)
+  - Click the desired Background/Rarity Filter (note you can do this without connecting wallet... but Accumulated NFTL for each degen won't appear, but you should still get the Id/Name/Image to load)
+ - Once the Degens have loaded, you can now apply the other filters, like "Accumulated NFTL High To Low" and the min/max restrictions on these filters). 
+ 
+ If you change the background filter (note: you can multi select, or remove selections with holding control while clicking)
+ There is definitely a lot of improvements that could be made on data filtering respecting the Sorting before/after a rarity is selected.
 
-This project uses [`create-react-app`](https://create-react-app.dev/), so most
-configuration files are handled by it.
-
-To run it, you just need to execute `npm start` in a terminal, and open
-[http://localhost:3000](http://localhost:3000).
-
-To learn more about what `create-react-app` offers, you can read
-[its documentation](https://create-react-app.dev/docs/getting-started).
-
-## Architecture of the Dapp
-
-This Dapp consists of multiple React Components, which you can find in
-`src/components`.
-
-Most of them are presentational components, have no logic, and just render HTML.
-
-The core functionality is implemented in `src/components/Dapp.js`, which has
-examples of how to connect to the user's wallet, initialize your Ethereum
-connection and contracts, read from the contract's state, and send transactions.
-
-You can use the `Dapp` component as a starting point for your project. It has
-comments explaining each part of its code, and indicating what's specific to
-this project, and what can be reused.
-
-## Feedback, help and news
-
-Feel free to reach us through this repository or
-[our Discord server](https://invite.gg/HardhatSupport).
-
-Also you can [follow us on Twitter](https://twitter.com/HardhatHQ).
-
-**Happy _buidling_!**
+If you click the `Home` link, it will take you to the splash page of the other 3 Web3 frontend projects I have created (and that are the skeleton of this project)

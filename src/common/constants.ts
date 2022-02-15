@@ -78,14 +78,16 @@ export enum Messages {
   TransactionPending = "TransactionPending"
 }
 
-export enum BuboActions {
-  RENAME = "Rename",
-  ANTIDOTE = "Antidote",
-  INFECT = "Infect"
-}
-
 export enum RelativeAllowances {
   EQUAL = "Equal To",
   INCREASE = "Increase By",
   DECREASE = "Decrease By",
+}
+
+
+export enum DegenBackgrounds {
+  COMMON = "Common",
+  RARE = "Rare",
+  META = "Meta",
+  LEGENDARY = "Legendary"
 }

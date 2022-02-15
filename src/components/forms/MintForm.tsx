@@ -9,6 +9,7 @@ import {
   CRYPTO_CURRENCY_SYMBOL
 } from "../../common/constants";
 import { randomDisappointment } from "../../common/functions";
+import { FilterDropdown } from "../buttons/FilterDropdown";
 
 export function MintForm(): React.ReactElement {
   const { 
@@ -39,13 +40,6 @@ export function MintForm(): React.ReactElement {
       </div>
     
       <div className="row">
-        <div className="multiple wrapper">
-          <div className="multiple message">
-            How many would you like to mint?
-          </div>
-          <div className="multiple input-wrapper">
-          </div>
-        </div>
       </div>
       <div className="row">
         <div className="mint-count">

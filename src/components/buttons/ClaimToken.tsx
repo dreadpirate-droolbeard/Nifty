@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DappContext } from "../../contexts/MintContext";
-import { TokenDataContext } from "../../contexts/TokenDataContext";
+import { TokenDataContext } from "../../contexts/SecondDappContext";
 import token from "../../resources/logos/NFTL.png";
 
 export function ClaimToken(): React.ReactElement {

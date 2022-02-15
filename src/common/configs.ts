@@ -1,6 +1,6 @@
 // note: if trying to urls against other locally hosted urls, drop the "s" of https
 // when you get that error that makes no sense.
-export const urlBase = new URL("https://www.paulygonprogramming.wtf/");
+export const urlBase = new URL("https://www.twistedtech.wtf/");
 
 export const pathDegen = "/degen";
 

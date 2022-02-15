@@ -14,6 +14,7 @@ import {
   MINT_BUTTON_SOLD_OUT_MESSAGE,
   Messages,
   RelativeAllowances,
+  DegenBackgrounds,
 } from "../common/constants";
 
 import NFTLTokenArtifact from "../contracts/NFTLToken.json";
@@ -25,11 +26,10 @@ import {
   ADDRESS_NFTL
 } from "../common/configs";
 
-import { randomDisappointment } from "../common/functions"
 import { tTokenURI } from "./types";
 import { download, saveFrontendFiles } from "./Saving";
 import { fetchUriData } from "../common/HTTPUtils";
-import { tDegenObject } from "../common/types";
+import { eSortOptions, tDegenObject } from "../common/types";
 
 
 const noOp = (): void => {/*noOp*/};
@@ -63,14 +63,19 @@ const dappStateInitial = {
   setWarningMessage: noOp,
   toggleMusic: noOp,
 
-  // changeName: noOp,
-  // attack: noOp,
-  // heal: noOp,
+
   setApproval: noOp,
+
   getAccumulatedNFTL: ():Promise<number> => new Promise((resolve)=> resolve(0)),
   unclaimed: ():Promise<number> => new Promise((resolve)=> resolve(0)),
   claimToken: ():Promise<number> => new Promise((resolve)=> resolve(0)),
   allowance: 0,
+
+  setFilterSelection: noOp,
+  filterSelection: [],
+
+  setSortSelection: noOp,
+  sortSelection: undefined
 };
 
 interface iDappState {
@@ -109,6 +114,12 @@ interface iDappState {
   unclaimed: (tokenIds: number[]) => Promise<number>,
   claimToken: (tokenIds: number[]) => Promise<number>,
   allowance: number,
+
+  filterSelection: DegenBackgrounds[],
+  setFilterSelection: (selected: DegenBackgrounds[]) => void,
+
+  setSortSelection: (sort: eSortOptions | undefined) => void,
+  sortSelection: eSortOptions | undefined
 }
 
 export const DappContext = React.createContext<iDappState>(dappStateInitial);
@@ -147,7 +158,10 @@ export class DappContextProvider extends Component<unknown, iDappState> {
         getAccumulatedNFTL: this.getAccumulatedNFTL,
         setApproval: this.setApproval,
         unclaimed: this.unclaimed,
-        claimToken: this.claimToken
+        claimToken: this.claimToken,
+
+        setFilterSelection: this.setFilterSelection,
+        setSortSelection: this.setSortSelection
         } } 
       >
         {this.props.children}
@@ -160,11 +174,13 @@ export class DappContextProvider extends Component<unknown, iDappState> {
     const ethereumDefined =  ethers !== undefined;
     
     if(ethereumDefined){
+      this.web3 = new Web3(window.ethereum);
       this.setState({ 
         messageStatus: ethereumDefined ? Messages.WalletDisconnected : Messages.WalletMissing, 
       }
         , () => {
           this._checkNetwork();
+          this._intializeEthers();
         } 
       );
   
@@ -270,7 +286,7 @@ export class DappContextProvider extends Component<unknown, iDappState> {
     this.setState({ 
       userBalance,
       messageStatus: Messages.WalletConnected,
-      playMusic: true
+      // playMusic: true
     });
 
     this._initialize(userAddress);
@@ -408,51 +424,13 @@ export class DappContextProvider extends Component<unknown, iDappState> {
   /* BUBOS Specific Functions */
   // ------------------------------------------------------------------
 
-  // _buboErrors = (err:any): void => {
-  //   const message = err.data.message;
-  //   let errorMessage = "";
-  //   let messageStatus = undefined;
+  setFilterSelection = (selection: DegenBackgrounds[]): void => {
+    this.setState({filterSelection: selection});
+  }
 
-  //   if(message.includes("burn amount exceeds allowance")){
-  //     errorMessage = "Not enough approved allowance of BLOOD.";
-  //     messageStatus =  Messages.TransactionError;
-  //   } else if(message.includes("burn amount exceeds balance")){
-  //     errorMessage = "Not enough BLOOD in wallet.";
-  //     messageStatus =  Messages.TransactionError;
-  //   }
-
-  //   this.setState({
-  //     errorMessage,
-  //     messageStatus
-  //   });
-  // }
-
-  // getPlaguePrices = async(): Promise<void> => {
-  //   let pitsOpen = false;
-  //   let infectPrice = Infinity;
-  //   let antidotePrice = Infinity;
-  //   let renamePrice = Infinity;
-
-  //   try{
-  //     infectPrice = this._fromWei(await this._contract.INFECT_PRICE());
-  //     antidotePrice = this._fromWei(await this._contract.ANTIDOTE_PRICE());
-  //     renamePrice = this._fromWei(await this._contract.NAME_CHANGE_PRICE());
-  //     pitsOpen = await this._contract.plaguePits();
-
-  //     infectPrice = infectPrice >= 999999999999 ? Infinity : infectPrice;
-  //     antidotePrice = antidotePrice >= 999999999999 ? Infinity : antidotePrice;
-  //     renamePrice = renamePrice >= 999999999999 ? Infinity : renamePrice;
-
-  //     this.setState({
-  //       infectPrice,
-  //       antidotePrice,
-  //       renamePrice,
-  //       pitsOpen
-  //     })
-  //   } catch (err: any) {
-  //     console.error("Error attempting to retrieve Plague Pit info.", err)
-  //   }
-  // }
+  setSortSelection = (sort: eSortOptions | undefined): void => {
+    this.setState({sortSelection: sort});
+  }
 
   getAccumulatedNFTL = async (tokenId: number): Promise<number> => {
     let accumulated = 0;
