@@ -286,7 +286,7 @@ export class DappContextProvider extends Component<unknown, iDappState> {
     this.setState({ 
       userBalance,
       messageStatus: Messages.WalletConnected,
-      playMusic: true
+      // playMusic: true
     });
 
     this._initialize(userAddress);

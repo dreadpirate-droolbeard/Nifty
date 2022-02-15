@@ -258,7 +258,7 @@ export function Degens(): ReactElement {
           className="loading-div"
           ref={loadingRef}
         >
-          {hasMoreData ? <span >Loading...</span> : <span>End Of Dataset</span>}
+          {hasMoreData ? <div className="loader-text">Select a Filter... or Loading more data (if filter already selected)</div> : <span>End Of Dataset</span>}
         </div>
       </InfiniteScroll>
     </div>
